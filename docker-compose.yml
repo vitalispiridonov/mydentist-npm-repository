@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  verdaccio:
+    container_name: mydentist-verdaccio
+    image: verdaccio/verdaccio
+    networks:
+      - mydentist
+    volumes:
+      - ./conf:/opt/verdaccio/conf
+      - ./storage:/opt/verdaccio/storage
+      - ./plugins:/opt/verdaccio/plugins
+    ports:
+      - 4873:4873
+
+networks:
+  mydentist:
+    external: true
